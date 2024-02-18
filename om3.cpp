@@ -54,6 +54,9 @@ class Geom
         count++;
         return S;
     }
+    ~Geom() {
+        cout << Geom::count << endl;
+    }
  
 };
 
@@ -65,11 +68,14 @@ double Geom::S = 0;
 
 int main()
 {
+    system("chcp 1251");
+    system("cls");
+   char conec = ' ';
+   do{
     double a1 = 0;
     double b1 = 0;
     int sin = 0;
-    system("chcp 1251");
-    system("cls");
+    
     Geom chelik;
     int choice = 0;
     cout<< R"(Выберите Фигуру для подсчета площади: 
@@ -91,6 +97,8 @@ int main()
         cout << "Введите высоту: ";
         cin >> b1;
         cout << "S="<<chelik.triangle(a1, b1) << endl;
+        cout << "Продолжить? '+' - да, '-' - нет:";
+        cin >> conec;
         break;
     case 2:
         cout << "Площадь треугольника через две стороны и угл между ними" << endl;
@@ -101,6 +109,8 @@ int main()
         cout << "Введите градусную меру угла между ними: " ;
         cin >> sin;
         cout << "S=" << chelik.triangle(a1, b1, sin) << endl;
+        cout << "Продолжить? '+' - да, '-' - нет:";
+        cin >> conec;
         break;
     case 3:
         cout << "Площадь прямоугольника" ;
@@ -109,12 +119,16 @@ int main()
         cout << "Введите вторую сторону: " ;
         cin >> b1;
         cout << "S=" << chelik.rectangle(a1, b1) << endl;
+        cout << "Продолжить? '+' - да, '-' - нет:";
+        cin >> conec;
         break;
     case 4:
         cout << "Площадь квадрата:" << endl;
         cout << "Введите сторону: " ;
         cin >> a1;
         cout << "S=" << chelik.square(a1) << endl;
+        cout << "Продолжить? '+' - да, '-' - нет:";
+        cin >> conec;
         break;
     case 5:
         cout << "Площадь ромба:" << endl;
@@ -123,9 +137,12 @@ int main()
         cout << "Введите вторую диагональ: ";
         cin >> b1;
         cout << "S=" << chelik.rhomb(a1,b1) << endl;
+        cout << "Продолжить? '+' - да, '-' - нет:";
+        cin >> conec;
         break;
     default:
         break;
     }
+   } while (conec == '+');
 }
 
